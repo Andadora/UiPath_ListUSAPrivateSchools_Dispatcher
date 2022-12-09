@@ -1,0 +1,17 @@
+﻿{
+  "Id": "bkHmdiqSXECMUw_pShtKrg",
+  "Reference": "waKmVC1iEkO_27UpmMFivw/bkHmdiqSXECMUw_pShtKrg",
+  "ParentRef": "waKmVC1iEkO_27UpmMFivw/HCpbn71kIEiGEmVxBVn5kw",
+  "Name": "Extract States Table Data",
+  "Type": "Element",
+  "TaxonomyType": "Element",
+  "Created": "2022-12-09T16:24:04.0561503Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=22.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=22.10.2.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-12-09T16:25:14.0284492Z",
+  "UpdatedBy": [
+    "UiPath.Platform, Version=22.10.2.0, Culture=neutral, PublicKeyToken=null"
+  ]
+}
