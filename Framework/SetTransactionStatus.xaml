@@ -108,7 +108,7 @@
               <av:PointCollection x:Key="ConnectorLocation">110,633.6 110,663.6 210,663.6 210,715.6</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Sequence sap2010:Annotation.AnnotationText="If the transaction item is processed without any exception, its status is updated as Successful." DisplayName="Success" sap:VirtualizedContainerService.HintSize="200,162" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence sap2010:Annotation.AnnotationText="If the transaction item is processed without any exception, its status is updated as Successful." DisplayName="Success" sap:VirtualizedContainerService.HintSize="624,2163" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -116,28 +116,31 @@
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If DisplayName="If TransactionItem is a QueueItem (Success)" sap:VirtualizedContainerService.HintSize="436,479" sap2010:WorkflowViewState.IdRef="If_1">
+            <If DisplayName="If TransactionItem is a QueueItem (Success)" sap:VirtualizedContainerService.HintSize="562,1416" sap2010:WorkflowViewState.IdRef="If_1">
               <If.Condition>
                 <InArgument x:TypeArguments="x:Boolean">
                   <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_42">in_TransactionItem != null &amp;&amp; in_TransactionItem.GetType().FullName.Equals("UiPath.Core.QueueItem")</CSharpValue>
                 </InArgument>
               </If.Condition>
               <If.Then>
-                <ui:RetryScope DisplayName="Retry Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="354,216" sap2010:WorkflowViewState.IdRef="RetryScope_3">
+                <ui:RetryScope DisplayName="Retry Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="480,1153" sap2010:WorkflowViewState.IdRef="RetryScope_3">
                   <ui:RetryScope.ActivityBody>
                     <ActivityAction>
-                      <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="312,32" sap2010:WorkflowViewState.IdRef="TryCatch_8">
+                      <TryCatch DisplayName="Try Catch Set Transaction Status (Success)" sap:VirtualizedContainerService.HintSize="438,969" sap2010:WorkflowViewState.IdRef="TryCatch_8">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <TryCatch.Try>
-                          <ui:SetTransactionStatus ContinueOnError="{x:Null}" Reason="{x:Null}" ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Set transaction status (Successful)" ErrorType="Application" sap:VirtualizedContainerService.HintSize="334,231" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_5" Status="Successful">
+                          <ui:SetTransactionStatus ContinueOnError="{x:Null}" ServiceBaseAddress="{x:Null}" DisplayName="Set transaction status (Successful)" ErrorType="Application" sap:VirtualizedContainerService.HintSize="334,732" sap2010:WorkflowViewState.IdRef="SetTransactionStatus_5" Status="Successful">
                             <ui:SetTransactionStatus.Analytics>
                               <scg:Dictionary x:TypeArguments="x:String, InArgument" />
                             </ui:SetTransactionStatus.Analytics>
+                            <ui:SetTransactionStatus.Details>
+                              <InArgument x:TypeArguments="x:String" />
+                            </ui:SetTransactionStatus.Details>
                             <ui:SetTransactionStatus.FolderPath>
                               <InArgument x:TypeArguments="x:String">
                                 <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_62">in_Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
@@ -146,6 +149,12 @@
                             <ui:SetTransactionStatus.Output>
                               <scg:Dictionary x:TypeArguments="x:String, InArgument" />
                             </ui:SetTransactionStatus.Output>
+                            <ui:SetTransactionStatus.Reason>
+                              <InArgument x:TypeArguments="x:String" />
+                            </ui:SetTransactionStatus.Reason>
+                            <ui:SetTransactionStatus.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:SetTransactionStatus.TimeoutMS>
                             <ui:SetTransactionStatus.TransactionItem>
                               <InArgument x:TypeArguments="ui:QueueItem">
                                 <CSharpValue x:TypeArguments="ui:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_61">in_TransactionItem</CSharpValue>
@@ -487,7 +496,7 @@
                   <av:Size x:Key="ShapeSize">200,177</av:Size>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="624,2994" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence sap2010:Annotation.AnnotationText="If a system exception occurs during the process, the transaction item's status is updated as Failed (Exception Type: Application)." DisplayName="System Exception" sap:VirtualizedContainerService.HintSize="200,177" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:Boolean" Name="QueueRetry" />
                   <Variable x:TypeArguments="x:String" Name="ScreenshotPath" />
