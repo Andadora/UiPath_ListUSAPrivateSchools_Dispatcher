@@ -1,0 +1,14 @@
+﻿{
+  "Id": "KG7rF-z3Jkej9kdkdQdMTw",
+  "Reference": "waKmVC1iEkO_27UpmMFivw/KG7rF-z3Jkej9kdkdQdMTw",
+  "ParentRef": "waKmVC1iEkO_27UpmMFivw/X4MRTvfjYEWSN03SkEJv-w",
+  "Name": "State Screen",
+  "Type": "Screen",
+  "TaxonomyType": "Screen",
+  "Created": "2022-12-10T14:46:47.5693634Z",
+  "CreatedBy": [
+    "UiPath.UIAutomationCore, Version=22.10.3.0, Culture=neutral, PublicKeyToken=null",
+    "UiPath.Platform, Version=22.10.2.0, Culture=neutral, PublicKeyToken=null"
+  ],
+  "Updated": "2022-12-10T14:46:47.5693634Z"
+}
