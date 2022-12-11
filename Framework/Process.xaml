@@ -4,7 +4,7 @@
     <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
-  <sap:VirtualizedContainerService.HintSize>998,1313</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1031,697</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -83,7 +83,7 @@
       <AssemblyReference>System.Linq.Expressions</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process State data" sap:VirtualizedContainerService.HintSize="500,1248" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="Main purpose of dispatcher is to supply queue with queue items for each state" DisplayName="Supply queue with State data" sap:VirtualizedContainerService.HintSize="500,632" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="dt_CountiesData" />
     </Sequence.Variables>
@@ -100,42 +100,37 @@
         </InArgument>
       </ui:LogMessage.Message>
     </ui:LogMessage>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Get Counties Data" sap:VirtualizedContainerService.HintSize="438,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Get Counties Data.xaml">
-      <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-          <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">in_Config</CSharpValue>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_StateName">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">in_TransactionItem["State Name"].ToString()</CSharpValue>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_StateUrl">
-          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">in_TransactionItem["State Url"].ToString()</CSharpValue>
-        </InArgument>
-        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_dt_CountiesData">
-          <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">dt_CountiesData</CSharpReference>
-        </OutArgument>
-      </ui:InvokeWorkflowFile.Arguments>
-    </ui:InvokeWorkflowFile>
-    <TryCatch DisplayName="Try Add items to queue" sap:VirtualizedContainerService.HintSize="438,736" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Add item to queue" sap:VirtualizedContainerService.HintSize="438,338" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Variables>
         <Variable x:TypeArguments="sd:DataTable" Name="dt_BulkAddToQueueResult" />
       </TryCatch.Variables>
       <TryCatch.Try>
-        <ui:BulkAddQueueItems ContinueOnError="False" DisplayName="Bulk Add Queue Items: Each county data" sap:VirtualizedContainerService.HintSize="334,499" sap2010:WorkflowViewState.IdRef="BulkAddQueueItems_2" QueueName="ListUSAPrivateSchools_Queue">
-          <ui:BulkAddQueueItems.QueueItemsDataTable>
-            <InArgument x:TypeArguments="sd:DataTable">
-              <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">dt_CountiesData</CSharpValue>
+        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" ContinueOnError="False" DisplayName="Add Queue Item for this state" sap:VirtualizedContainerService.HintSize="334,232" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal">
+          <ui:AddQueueItem.FolderPath>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">in_Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
             </InArgument>
-          </ui:BulkAddQueueItems.QueueItemsDataTable>
-          <ui:BulkAddQueueItems.Result>
-            <OutArgument x:TypeArguments="sd:DataTable">
-              <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">dt_BulkAddToQueueResult</CSharpReference>
-            </OutArgument>
-          </ui:BulkAddQueueItems.Result>
-          <ui:BulkAddQueueItems.TimeoutMS>
+          </ui:AddQueueItem.FolderPath>
+          <ui:AddQueueItem.ItemInformation>
+            <InArgument x:TypeArguments="x:String" x:Key="&quot;State Name&quot;">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">in_TransactionItem["State Name"].ToString()</CSharpValue>
+            </InArgument>
+            <InArgument x:TypeArguments="x:String" x:Key="&quot;State Url&quot;">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">in_TransactionItem["State Url"].ToString()</CSharpValue>
+            </InArgument>
+          </ui:AddQueueItem.ItemInformation>
+          <ui:AddQueueItem.QueueType>
+            <InArgument x:TypeArguments="x:String">
+              <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_10">in_Config["OrchestratorQueueName"].ToString()</CSharpValue>
+            </InArgument>
+          </ui:AddQueueItem.QueueType>
+          <ui:AddQueueItem.Reference>
+            <InArgument x:TypeArguments="x:String" />
+          </ui:AddQueueItem.Reference>
+          <ui:AddQueueItem.TimeoutMS>
             <InArgument x:TypeArguments="x:Int32" />
-          </ui:BulkAddQueueItems.TimeoutMS>
-        </ui:BulkAddQueueItems>
+          </ui:AddQueueItem.TimeoutMS>
+        </ui:AddQueueItem>
       </TryCatch.Try>
       <TryCatch.Catches>
         <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
@@ -155,23 +150,23 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Failed to add items to queue" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error">
+              <ui:LogMessage DisplayName="Log Failed to add item to queue" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Error">
                 <ui:LogMessage.Message>
                   <InArgument x:TypeArguments="x:Object">
-                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">"Unable to add items to queue for state " + in_TransactionItem["State Name"].ToString() + "."</CSharpValue>
+                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">"Unable to add item to queue for state " + in_TransactionItem["State Name"].ToString() + "."</CSharpValue>
                   </InArgument>
                 </ui:LogMessage.Message>
               </ui:LogMessage>
-              <Rethrow sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+              <Rethrow DisplayName="Rethrow exception" sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <ui:LogMessage DisplayName="Log Successful queue items upload" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+        <ui:LogMessage DisplayName="Log Successful queue item upload" sap:VirtualizedContainerService.HintSize="334,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
           <ui:LogMessage.Message>
             <InArgument x:TypeArguments="x:Object">
-              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7" xml:space="preserve">"Successfully added " + dt_CountiesData.Rows.Count.ToString() + " items to queue. State " + in_TransactionItem["State Name"]  + "."</CSharpValue>
+              <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15" xml:space="preserve">"Successfully added item to queue for State " + in_TransactionItem["State Name"].ToString()  + "."</CSharpValue>
             </InArgument>
           </ui:LogMessage.Message>
         </ui:LogMessage>
