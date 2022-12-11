@@ -1,0 +1,189 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Delete_Unprocessed_Queue_Items" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1031,1871</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="46">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Windows</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Core.Activities.Orchestrator</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="64">
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>WindowsFormsIntegration</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Deletes all unprocessed items from the queue. It is useful to mark all remaining unprocessed items when the dispatcher process adds similar set of items with each run and there is no mechanism of external (in source) marking item as done in producer process." DisplayName="Delete  All Unprocessed Queue Items" sap:VirtualizedContainerService.HintSize="498,1878" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:IEnumerable(ui:QueueItem)" Name="UnprocessedQueueItemsToDelete" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:GetQueueItems Priority="{x:Null}" Top="{x:Null}" DisplayName="Get unprocessed Queue Items" FilterStrategy="Equals" FolderPath="in_Config[&quot;OrchestratorQueueFolder&quot;].ToString()" sap:VirtualizedContainerService.HintSize="436,181" sap2010:WorkflowViewState.IdRef="GetQueueItems_1" QueueItemStates="New">
+      <ui:GetQueueItems.Duration>
+        <InArgument x:TypeArguments="s:Nullable(x:Int32)" />
+      </ui:GetQueueItems.Duration>
+      <ui:GetQueueItems.From>
+        <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
+      </ui:GetQueueItems.From>
+      <ui:GetQueueItems.QueueName>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">in_Config["OrchestratorQueueName"].ToString()</CSharpValue>
+        </InArgument>
+      </ui:GetQueueItems.QueueName>
+      <ui:GetQueueItems.Reference>
+        <InArgument x:TypeArguments="x:String" />
+      </ui:GetQueueItems.Reference>
+      <ui:GetQueueItems.Result>
+        <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
+          <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_66">UnprocessedQueueItemsToDelete</CSharpReference>
+        </OutArgument>
+      </ui:GetQueueItems.Result>
+      <ui:GetQueueItems.Skip>
+        <InArgument x:TypeArguments="x:Int32" />
+      </ui:GetQueueItems.Skip>
+      <ui:GetQueueItems.TimeoutMS>
+        <InArgument x:TypeArguments="x:Int32" />
+      </ui:GetQueueItems.TimeoutMS>
+      <ui:GetQueueItems.To>
+        <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
+      </ui:GetQueueItems.To>
+    </ui:GetQueueItems>
+    <ui:InterruptibleWhile CurrentIndex="{x:Null}" DisplayName="While there are unprocessed items in queue" sap:VirtualizedContainerService.HintSize="436,1463" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+      <ui:InterruptibleWhile.Body>
+        <Sequence DisplayName="Delete  Unprocessed Queue Items And Check if retry needed" sap:VirtualizedContainerService.HintSize="400,1288" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:DeleteQueueItems ContinueOnError="False" DisplayName="Delete  Unprocessed Queue Items" sap:VirtualizedContainerService.HintSize="338,181" sap2010:WorkflowViewState.IdRef="DeleteQueueItems_1">
+            <ui:DeleteQueueItems.FolderPath>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">in_Config["OrchestratorQueueFolder"].ToString()</CSharpValue>
+              </InArgument>
+            </ui:DeleteQueueItems.FolderPath>
+            <ui:DeleteQueueItems.QueueItems>
+              <InArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
+                <CSharpValue x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">UnprocessedQueueItemsToDelete</CSharpValue>
+              </InArgument>
+            </ui:DeleteQueueItems.QueueItems>
+            <ui:DeleteQueueItems.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:DeleteQueueItems.TimeoutMS>
+          </ui:DeleteQueueItems>
+          <ui:GetQueueItems Priority="{x:Null}" DisplayName="Get Unprocessed Queue Items after deletion" FilterStrategy="Equals" FolderPath="in_Config[&quot;OrchestratorQueueFolder&quot;].ToString()" sap:VirtualizedContainerService.HintSize="338,945" sap2010:WorkflowViewState.IdRef="GetQueueItems_2" QueueItemStates="New">
+            <ui:GetQueueItems.Duration>
+              <InArgument x:TypeArguments="s:Nullable(x:Int32)" />
+            </ui:GetQueueItems.Duration>
+            <ui:GetQueueItems.From>
+              <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
+            </ui:GetQueueItems.From>
+            <ui:GetQueueItems.QueueName>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">in_Config["OrchestratorQueueName"].ToString()</CSharpValue>
+              </InArgument>
+            </ui:GetQueueItems.QueueName>
+            <ui:GetQueueItems.Reference>
+              <InArgument x:TypeArguments="x:String" />
+            </ui:GetQueueItems.Reference>
+            <ui:GetQueueItems.Result>
+              <OutArgument x:TypeArguments="scg:IEnumerable(ui:QueueItem)">
+                <CSharpReference x:TypeArguments="scg:IEnumerable(ui:QueueItem)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_67">UnprocessedQueueItemsToDelete</CSharpReference>
+              </OutArgument>
+            </ui:GetQueueItems.Result>
+            <ui:GetQueueItems.Skip>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:GetQueueItems.Skip>
+            <ui:GetQueueItems.TimeoutMS>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:GetQueueItems.TimeoutMS>
+            <ui:GetQueueItems.To>
+              <InArgument x:TypeArguments="s:Nullable(s:DateTime)" />
+            </ui:GetQueueItems.To>
+            <ui:GetQueueItems.Top>
+              <InArgument x:TypeArguments="x:Int32" />
+            </ui:GetQueueItems.Top>
+          </ui:GetQueueItems>
+        </Sequence>
+      </ui:InterruptibleWhile.Body>
+      <ui:InterruptibleWhile.Condition>
+        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">UnprocessedQueueItemsToDelete.Count()&gt;0</CSharpValue>
+      </ui:InterruptibleWhile.Condition>
+    </ui:InterruptibleWhile>
+  </Sequence>
+</Activity>
