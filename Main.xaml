@@ -139,7 +139,7 @@
         <av:PointCollection x:Key="ConnectorLocation">70,76.34 100,76.34 100,76.6 249,76.6</av:PointCollection>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Read configuration file, initialize applications used in the process, clear queue before run" DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="221.6,131.2" sap2010:WorkflowViewState.IdRef="State_4">
+    <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="Read configuration file, initialize applications used in the process, clear queue before run" DisplayName="Initialization" sap:VirtualizedContainerService.HintSize="632,3665.6" sap2010:WorkflowViewState.IdRef="State_4">
       <State.Entry>
         <TryCatch DisplayName="Try initializing settings and applications" sap:VirtualizedContainerService.HintSize="587.2,3236" sap2010:WorkflowViewState.IdRef="TryCatch_1">
           <sap:WorkflowViewStateService.ViewState>
@@ -312,9 +312,6 @@
                   <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
                     <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">Config</CSharpValue>
                   </InArgument>
-                  <InArgument x:TypeArguments="x:String" x:Key="in_PrivateSchoolReviewHomeUrl">
-                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_134">Config["PrivateSchoolReviewHomeUrl"].ToString()</CSharpValue>
-                  </InArgument>
                   <OutArgument x:TypeArguments="ui:UiElement" x:Key="out_BrowserWindow">
                     <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_67">BrowserWindow</CSharpReference>
                   </OutArgument>
@@ -390,7 +387,7 @@
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Transition.To>
-            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="481.6,518.4" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
+            <State x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="End process and close all applications used." DisplayName="End Process" sap:VirtualizedContainerService.HintSize="176,115.2" sap2010:WorkflowViewState.IdRef="State_2" IsFinal="True">
               <State.Entry>
                 <TryCatch DisplayName="Try to close all aplications" sap:VirtualizedContainerService.HintSize="436.8,364" sap2010:WorkflowViewState.IdRef="TryCatch_5">
                   <TryCatch.Try>
