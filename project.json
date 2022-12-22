@@ -3,17 +3,17 @@
   "description": "REFramework based dispatcher ",
   "main": "Main.xaml",
   "dependencies": {
-    "PrivateSchoolReviewEdge": "[1.0.11]",
+    "PrivateSchoolReviewEdge": "[1.0.13]",
     "UiPath.Excel.Activities": "[2.16.0]",
     "UiPath.System.Activities": "[22.10.3]",
-    "UiPath.Testing.Activities": "[22.10.0]",
+    "UiPath.Testing.Activities": "[22.12.0-preview]",
     "UiPath.UIAutomation.Activities": "[22.10.3]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "22.10.3.0",
-  "projectVersion": "1.0.5",
+  "projectVersion": "1.0.6",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -85,6 +85,13 @@
         "testCaseType": "TestCase",
         "executionTemplateType": "Local",
         "fileName": "Tests\\WorkflowTestCaseTemplate.xaml"
+      },
+      {
+        "editingStatus": "InProgress",
+        "testCaseId": "b68edf45-ba69-4c37-8a75-6d6018f7591d",
+        "testCaseType": "TestCase",
+        "executionTemplateInvokeIsolated": false,
+        "fileName": "Tests\\CreateOutputReportTestCase.xaml"
       }
     ],
     "modernBehavior": true
